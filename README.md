@@ -1,6 +1,6 @@
 # Prova 1 de Álgebra Linear Computacional
 
-**Questão 1**
+**Questão 1)**
 
 Dados x, y ∊ R<sup>n</sup> e a ∊ R, escreva um algoritmo, com complexidade *O(n)*, que aloque em y o vetor ax + y.
 
@@ -17,11 +17,11 @@ void alocaY(float * x, float * y, float a, int n){
 ~~~
 
 
-**Questão 2**
+**Questão 2)**
 
 Sejam A ∊ R<sup>m x n</sup> e x ∊ Rn. O vetor Ax consiste em
 
-![CursoemVideo](img/matriz-questao2.png)
+![Matriz](img/matriz-questao2.png)
 
 Dados A ∊ R<sup>m x n</sup>, x ∊ R<sup>n</sup> e y ∊ R<sup>m</sup>, escreva um algoritmo, levando em consideração a operação
 descrita, que aloque em y o vetor Ax + y. 
@@ -40,12 +40,12 @@ void alocaY(int m, int n, float ** matriz, float * x, float * y){
 ~~~
 
 
-**Questão 3**
+**Questão 3)**
 
 Sejam A ∊ R<sup>m x n</sup> e x ∊ R<sup>n</sup>. O vetor Ax consiste numa combinação
 linear das colunas de A, cujas coordenadas da combinação são as componentes de x, isto é,
 
-![CursoemVideo](img/matriz-questao3.png)
+![Matriz](img/matriz-questao3.png)
 
 Dados A ∊ R<sup>m x n</sup>, x ∊ R<sup>n</sup> e y ∊ R<sup>m</sup>, escreva um algoritmo, levando em consideração a operação
 descrita, que aloque em y o vetor Ax + y. 
@@ -62,5 +62,71 @@ void alocaY(int m, int n, float ** matriz, float * x, float * y){
         }
     }
     for(int i = 0; i < m; i++) y[i] += Ax[i];
+}
+~~~
+
+
+**Questão 4)**
+
+Aplique as implementações dos métodos de *Gauss-Jacobi* e *Gauss-
+Seidel* construídas em aula para obter uma aproximação para a solução do sistema linear definido por
+
+![Sistema Linear](img/sistema-questao4.png)
+
+*Gauss-Jacobi*
+~~~c
+void jacobi(float ** A, float * B, float * xK, int m, int n){
+    int iteracao = 1;
+    float xK1[n];
+    float df;
+    
+    do{
+        for(int i = 0; i < m; i++){
+            double bi = B[i];
+            for(int j = 0; j < n; j++){
+                if(j != i){
+                    bi -= A[i][j] * xK[j];
+                }
+            }
+            bi /= A[i][i];
+            if(iteracao == 277){
+                printf("x_%d(%d) = %.6f", i + 1, iteracao, bi);
+                printf("\n");
+            }
+            xK1[i] = bi;
+        }
+        df = normaDif(xK1, xK, n);
+        memcpy(xK, xK1, n * sizeof(float));
+        iteracao++;
+    }while(df > pow(10.0, -4.0));
+}
+~~~
+
+*Gauss-Seidel*
+~~~c
+void seidel(float ** A, float * B, float * xK, int m, int n){
+    int iteracao = 1;
+    float xK1[n];
+    float df;
+    
+    do{
+        memcpy(xK1, xK, n * sizeof(float));
+        for(int i = 0; i < m; i++){
+            double bi = B[i];
+            for(int j = 0; j < n; j++){
+                if(j != i){
+                    bi -= A[i][j] * xK[j];
+                }
+            }
+            bi /= A[i][i];
+            if(iteracao == 163){
+                printf("x_%d(%d) = %.6f", i + 1, iteracao, bi);
+                printf("\n");
+            }
+            xK[i] = bi;
+        }
+        df = normaDif(xK, xK1, n);
+        iteracao++;
+    }while(df > pow(10.0, -4.0));
 }
 ~~~
