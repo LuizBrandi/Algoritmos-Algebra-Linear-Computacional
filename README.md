@@ -73,6 +73,8 @@ Seidel* construídas em aula para obter uma aproximação para a solução do si
 
 ![Sistema Linear](img/sistema-questao4.png)
 
+com n = 30, h = 0.1 e critério de parada ||x<sup>(k+1)</sup> - x<sup>(k)</sup>|| < 10<sup>-4</sup>. 
+
 *Gauss-Jacobi*
 ~~~c
 void jacobi(float ** A, float * B, float * xK, int m, int n){
