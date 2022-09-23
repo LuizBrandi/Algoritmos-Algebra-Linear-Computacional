@@ -37,7 +37,7 @@ void alocaY(int m, int n, float ** matriz, float * x, float * y){
 }
 ~~~
 
-<font size="5">Questão 3 </font>
+<font size="1">Questão 3 </font>
 
 Sejam A ∊ R<sup>m x n</sup> e x ∊ R<sup>n</sup>. O vetor Ax consiste numa combinação
 linear das colunas de A, cujas coordenadas da combinação são as componentes de x, isto é,
