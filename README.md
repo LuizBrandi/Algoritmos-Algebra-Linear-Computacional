@@ -1,6 +1,6 @@
 # Prova 1 de Álgebra Linear Computacional
 
-<font size="5">Questão 1 </font>
+**Questão 1**
 
 Dados x, y ∊ R<sup>n</sup> e a ∊ R, escreva um algoritmo, com complexidade *O(n)*, que aloque em y o vetor ax + y.
 
@@ -15,7 +15,9 @@ void alocaY(float * x, float * y, float a, int n){
     }
 }
 ~~~
-<font size="5">Questão 2 </font>
+
+
+**Questão 2**
 
 Sejam A ∊ R<sup>m x n</sup> e x ∊ Rn. O vetor Ax consiste em
 
@@ -37,7 +39,8 @@ void alocaY(int m, int n, float ** matriz, float * x, float * y){
 }
 ~~~
 
-<font size="1">Questão 3 </font>
+
+**Questão 3**
 
 Sejam A ∊ R<sup>m x n</sup> e x ∊ R<sup>n</sup>. O vetor Ax consiste numa combinação
 linear das colunas de A, cujas coordenadas da combinação são as componentes de x, isto é,
