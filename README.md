@@ -89,10 +89,6 @@ void jacobi(float ** A, float * B, float * xK, int m, int n){
                 }
             }
             bi /= A[i][i];
-            if(iteracao == 277){
-                printf("x_%d(%d) = %.6f", i + 1, iteracao, bi);
-                printf("\n");
-            }
             xK1[i] = bi;
         }
         df = normaDif(xK1, xK, n);
@@ -119,10 +115,6 @@ void seidel(float ** A, float * B, float * xK, int m, int n){
                 }
             }
             bi /= A[i][i];
-            if(iteracao == 163){
-                printf("x_%d(%d) = %.6f", i + 1, iteracao, bi);
-                printf("\n");
-            }
             xK[i] = bi;
         }
         df = normaDif(xK, xK1, n);
