@@ -1,6 +1,6 @@
 # Prova 1 de Álgebra Linear Computacional
 
-<h2> Questão 1 </h2>
+<font size="5">Questão 1 </font>
 
 Dados x, y ∊ R<sup>n</sup> e a ∊ R, escreva um algoritmo, com complexidade *O(n)*, que aloque em y o vetor ax + y.
 
@@ -15,8 +15,7 @@ void alocaY(float * x, float * y, float a, int n){
     }
 }
 ~~~
-
-<h2> Questão 2 </h2>
+<font size="5">Questão 2 </font>
 
 Sejam A ∊ R<sup>m x n</sup> e x ∊ Rn. O vetor Ax consiste em
 
@@ -35,5 +34,30 @@ void alocaY(int m, int n, float ** matriz, float * x, float * y){
         }
         y[i] = Ax[i] + y[i];
     }
+}
+~~~
+
+<font size="5">Questão 3 </font>
+
+Sejam A ∊ R<sup>m x n</sup> e x ∊ R<sup>n</sup>. O vetor Ax consiste numa combinação
+linear das colunas de A, cujas coordenadas da combinação são as componentes de x, isto é,
+
+![CursoemVideo](img/matriz-questao3.png)
+
+Dados A ∊ R<sup>m x n</sup>, x ∊ R<sup>n</sup> e y ∊ R<sup>m</sup>, escreva um algoritmo, levando em consideração a operação
+descrita, que aloque em y o vetor Ax + y. 
+
+~~~c
+void alocaY(int m, int n, float ** matriz, float * x, float * y){
+    float Ax[m];
+    zeraVetor(Ax, m);
+    int i, j;
+
+    for(i = 0; i < m; i++){
+        for(j = 0; j < n; j++){
+            Ax[j] += matriz[j][i] * x[i];
+        }
+    }
+    for(int i = 0; i < m; i++) y[i] += Ax[i];
 }
 ~~~
